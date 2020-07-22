@@ -1,0 +1,21 @@
+#animalTable {
+	border-collapse: collapse;
+}
+
+#animalTable thead {
+	background-color: #333333;
+	color: #dddddd;
+	text-align: center;
+}
+
+#animalTable thead tr th {
+	padding: .5rem 1rem;
+}
+
+#animalTable tbody tr td {
+	padding: .5rem 1rem;
+}
+
+#animalTable tbody tr:nth-child(even) {
+	background-color: #cccccc;
+}
