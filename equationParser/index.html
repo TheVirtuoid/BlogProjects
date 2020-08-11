@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="Description" content="theVirtuoid Equation Parser">
+		<link rel="icon" href="favicon.ico">
+		<link rel="stylesheet" href="equationParser.css">
+		<title>Equation Parser</title>
+	</head>
+	<body>
+		<h1>Equation Parser</h1>
+		<form id="parserForm">
+			<label>Enter your equation: <input type="text" id="equation" /></label>
+			<label><button type="submit" id="submitEquation">Submit!</button></label>
+			<p id="errorMessage">Invalid equation.</p>
+		</form>
+		<p>Result: <span id="result"></span></p>
+		<script type="module" src="equationParser.js"></script>
+	</body>
+</html>
