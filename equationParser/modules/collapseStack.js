@@ -1,6 +1,9 @@
 const collapseStack = (params) => {
 	let { operators, numbers } = params;
 	if (operators.length) {
+		if ("()".indexOf(operators[operators.length - 1]) !== -1) {
+			throw new SyntaxError("Mismatch parenthesis");
+		}
 		if (numbers.length <= 1) {
 			throw new SyntaxError("Too few numbers to perform operation");
 		}

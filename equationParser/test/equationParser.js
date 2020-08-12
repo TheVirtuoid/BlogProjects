@@ -27,26 +27,26 @@ assert.throws( () => calculateEquation("+"), { name: "SyntaxError", message: "To
 assert.throws( () => calculateEquation("-"), { name: "SyntaxError", message: "Too few numbers to perform operation"});
 assert.throws( () => calculateEquation("*"), { name: "SyntaxError", message: "Too few numbers to perform operation"});
 assert.throws( () => calculateEquation("/"), { name: "SyntaxError", message: "Too few numbers to perform operation"});
-
 assert.throws( () => calculateEquation("1+"), { name: "SyntaxError", message: "Too few numbers to perform operation"});
 assert.throws( () => calculateEquation("1-"), { name: "SyntaxError", message: "Too few numbers to perform operation"});
 assert.throws( () => calculateEquation("1*"), { name: "SyntaxError", message: "Too few numbers to perform operation"});
 assert.throws( () => calculateEquation("1/"), { name: "SyntaxError", message: "Too few numbers to perform operation"});
-
 assert.throws( () => calculateEquation("1/0"), { name: "SyntaxError", message: "Division by zero"});
 
 
-/*
 assert.throws( () => calculateEquation(")"), { name: "SyntaxError", message: "Mismatch parenthesis"});
 assert.throws( () => calculateEquation("("), { name: "SyntaxError", message: "Mismatch parenthesis"});
 
 assert.deepStrictEqual(calculateEquation("()"), null);
 assert.deepStrictEqual(calculateEquation("(1+1)+2"), 4);
 assert.deepStrictEqual(calculateEquation("(1-1)+2"), 2);
-assert.deepStrictEqual(calculateEquation("1-(1+2)"), -3);
+assert.deepStrictEqual(calculateEquation("1-(1+2)"), -2);
 assert.deepStrictEqual(calculateEquation("(1-1)*2"), 0);
-*/
 
+assert.deepStrictEqual(calculateEquation("(1+1)*(2-3)/(3+1)"), -.5);
+
+assert.throws( () => calculateEquation("(1+1)*(2-3)/((3+1)"), { name: "SyntaxError", message: "Mismatch parenthesis"});
+assert.deepStrictEqual(calculateEquation("(1+1)*((2-3)*6)/(3+1)"), -3);
 
 
 
