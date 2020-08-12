@@ -6,6 +6,9 @@ const collapseStacks = (operators, numbers, closing = "") => {
 			}
 			operators.pop();  // removes the "("
 		} else {
+			if (operators[operators.length - 1] === "(" || operators[operators.length - 1] === ")") {
+				throw new SyntaxError("Mismatch parenthesis");
+			}
 			if (numbers.length <= 1) {
 				throw new SyntaxError("Too few numbers to perform operation");
 			}

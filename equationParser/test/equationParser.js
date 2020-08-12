@@ -32,8 +32,8 @@ assert.throws( () => calculateEquation("1/"), { name: "SyntaxError", message: "T
 
 assert.throws( () => calculateEquation("1/0"), { name: "SyntaxError", message: "Division by zero"});
 
-assert.throws( () => calculateEquation(")"), { name: "SyntaxError", message: "Invalid equation"});
-assert.throws( () => calculateEquation("("), { name: "SyntaxError", message: "Invalid equation"});
+assert.throws( () => calculateEquation(")"), { name: "SyntaxError", message: "Mismatch parenthesis"});
+assert.throws( () => calculateEquation("("), { name: "SyntaxError", message: "Mismatch parenthesis"});
 
 assert.deepStrictEqual(calculateEquation("()"), null);
 assert.deepStrictEqual(calculateEquation("(1+1)+2"), 4);

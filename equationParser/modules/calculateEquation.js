@@ -18,6 +18,9 @@ const calculateEquation = (equation = "") => {
 		}
 	}
 	collapseStacks(operators, numbers, ")");
+	if (operators.length) {
+		throw new SyntaxError("Mismatch parenthesis");
+	}
 	if (numbers.length) {
 		return numbers.pop();
 	} else {
