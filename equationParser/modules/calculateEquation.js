@@ -1,9 +1,9 @@
 import processOperator from "./processOperator.js";
-import collapseStacks from "./collapseStacks.js";
+import collapseStack from "./collapseStack.js";
 
 const calculateEquation = (equation = "") => {
 	let numbers = [];
-	let operators = ['('];
+	let operators = [];
 	let items = equation.trim().split(/([+\-*/()])/g);
 	while (items.length) {
 		let item = items.shift();
@@ -11,15 +11,14 @@ const calculateEquation = (equation = "") => {
 			if (!isNaN(item)) {
 				numbers.push(parseFloat(item));
 			} else if ("+-*/()".indexOf(item) !== -1) {
-				processOperator(operators, numbers, item);
+				processOperator({ operators, numbers, operator: item });
 			} else {
 				throw new SyntaxError(`Invalid equation`);
 			}
 		}
 	}
-	collapseStacks(operators, numbers, ")");
-	if (operators.length) {
-		throw new SyntaxError("Mismatch parenthesis");
+	while (operators.length) {
+		collapseStack({ operators, numbers });
 	}
 	if (numbers.length) {
 		return numbers.pop();

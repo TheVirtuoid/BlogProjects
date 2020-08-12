@@ -1,24 +1,18 @@
-import collapseStacks from "./collapseStacks.js";
+import collapseStack from "./collapseStack.js";
+const precedence = new Map();
+precedence.set("+", 1);
+precedence.set("-", 1);
+precedence.set("*", 2);
+precedence.set("/", 2);
+precedence.set("(", 3);
+precedence.set(")", -1);
 
-const processOperator = (operators, numbers,operator) => {
-	let allDone = false;
-	while (!allDone) {
-		if (operators.length === 1) {
-			operators.push(operator);
-			allDone = true;
-		} else {
-			const lastOperator = operators[operators.length - 1];
-			if (operator === "+" || operator === "-") {
-				collapseStacks(operators, numbers);
-			} else if ((operator === "*" || operator === "/") && (lastOperator === "*" || lastOperator === "/")) {
-				collapseStacks(operators, numbers);
-			} else if (operator === ")") {
-				collapseStacks(")");
-			} else {
-				operators.push(operator);
-				allDone = true;
-			}
-		}
+const processOperator = (params) => {
+	let { operators, numbers, operator } = params;
+	let lastOperatorPrecedence;
+	while (precedence.get(operator) <= (lastOperatorPrecedence = operators.length ? precedence.get(operators[operators.length - 1]) : 0)) {
+		collapseStack( {operators, numbers });
 	}
+	operators.push(operator);
 }
 export default processOperator;
